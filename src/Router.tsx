@@ -1,12 +1,16 @@
-import { Routes, Route } from "react-router-dom"
-import QuestionList from "./pages/list/QuestionList"
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import QuestionList from "./pages/list/QuestionList";
 
-const RouterPage: React.FC = () => {
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <QuestionList />
+    },
+]);
+
+const RouterPage = () => {
     return (
-        <Routes>
-            <Route path="/" element={<QuestionList />} />
-            <Route path="/list" element={<QuestionList />} />
-        </Routes>
+        <RouterProvider router={router} />
     )
 }
 
