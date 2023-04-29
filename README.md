@@ -1,5 +1,6 @@
 # Stack Overflow
 
+This project is developed using React JS
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Clone Application
@@ -13,6 +14,13 @@ Use bellow command
 To build this project we use bellow npm configuration
 `node version: v18.12.1`
 `npm version: 8.19.2`
+
+## Features need to highlight
+
+- React context
+- Custom hooks
+- Typescript
+- React Router dom for routing (v6)
 
 ## Available Scripts
 
