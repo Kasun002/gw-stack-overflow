@@ -34,7 +34,7 @@ const QuestionListPage = () => {
                         <div className="question-summary">
                             <Link to={`/question/${question.id}`} className="title">{question.title}</Link>
                             <div>{question.body}</div>
-                            <div className="tags">{question.tags.map((tag: string) => <span key={tag}>{tag}</span>)}</div>
+                            <div className="tags">{question.tags.map((tag: string) => <span key={tag} className='tag_question'>{tag}</span>)}</div>
                             <div className="details">
                                 <span className="author">asked by {question.author}</span>
                                 <span className="timestamp">{question.timestamp}</span>
