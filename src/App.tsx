@@ -2,11 +2,16 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import RouterPage from './Router';
+import { AppContext } from './context/AppContext';
+import { DummyQuestions } from './utils/DummyQuestion';
 
-function App() {
+const App = () => {
+  const providerData = { questions: DummyQuestions }
   return (
     <div className="App">
-      <RouterPage></RouterPage>
+      <AppContext.Provider value={providerData}>
+        <RouterPage></RouterPage>
+      </AppContext.Provider>
     </div>
   );
 }

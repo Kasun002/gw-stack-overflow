@@ -1,19 +1,21 @@
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/header/Header';
-import { DummyQuestions } from '../../utils/DummyQuestion';
+import { AppContext } from '../../context/AppContext';
 import './QuestionList.css';
-import { useState } from 'react';
-const PAGE_SIZE = 15;
+import { PAGE_SIZE } from '../../utils/Constants';
+
 const QuestionList = () => {
+    const contextData = useContext(AppContext);
     const [currentPage, setCurrentPage] = useState(1);
 
     const handleClick = (page: number) => {
         setCurrentPage(page);
     };
 
-    const totalPages = Math.ceil(DummyQuestions.length / PAGE_SIZE);
+    const totalPages = Math.ceil(contextData.questions.length / PAGE_SIZE);
 
-    const visibleQuestions = DummyQuestions.slice(
+    const visibleQuestions = contextData.questions.slice(
         (currentPage - 1) * PAGE_SIZE,
         currentPage * PAGE_SIZE
     );
@@ -23,19 +25,16 @@ const QuestionList = () => {
             <div id="content" className="snippet-hidden">
                 <div id="mainbar" role="main" aria-labelledby="h-all-questions">
                     <Header></Header>
-                    <div className='question-wrapper'>
-                        QuestionList Page
-                    </div>
                 </div>
             </div>
             <div className="question-list">
-                {visibleQuestions.map(question => (
+                {visibleQuestions.map((question: any) => (
                     <div key={question.id} className="question">
                         <div className="votes">{question.votes}</div>
                         <div className="question-summary">
                             <Link to={`/questions/${question.id}`} className="title">{question.title}</Link>
                             <div>{question.body}</div>
-                            <div className="tags">{question.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+                            <div className="tags">{question.tags.map((tag: string) => <span key={tag}>{tag}</span>)}</div>
                             <div className="details">
                                 <span className="author">asked by {question.author}</span>
                                 <span className="timestamp">{question.timestamp}</span>
