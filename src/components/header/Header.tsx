@@ -7,7 +7,7 @@ const Header = () => {
     const contextData = useContext(AppContext);
 
     useEffect(() => {
-        console.log(contextData.questions)
+        // console.log(contextData.questions)
     }, [contextData])
 
 
