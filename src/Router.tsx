@@ -13,7 +13,7 @@ const router = createBrowserRouter([
         element: <Question/>
     },
     {
-        path: "/detail",
+        path: "question/:id",
         element: <QuestionDetail/>
     },
 ]);
