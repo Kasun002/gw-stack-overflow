@@ -10,10 +10,11 @@ Use bellow command
 
 ## Install npm
 
-`npm i`
-To build this project we use bellow npm configuration
-`node version: v18.12.1`
-`npm version: 8.19.2`
+- `npm i`
+
+- To build this project we use bellow npm configuration
+- `node version: v18.12.1`
+- `npm version: 8.19.2`
 
 ## Features need to highlight
 
