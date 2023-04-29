@@ -32,7 +32,7 @@ const QuestionListPage = () => {
                     <div key={question.id} className="question">
                         <div className="votes">{question.votes}</div>
                         <div className="question-summary">
-                            <Link to={`/questions/${question.id}`} className="title">{question.title}</Link>
+                            <Link to={`/question/${question.id}`} className="title">{question.title}</Link>
                             <div>{question.body}</div>
                             <div className="tags">{question.tags.map((tag: string) => <span key={tag}>{tag}</span>)}</div>
                             <div className="details">
@@ -45,7 +45,7 @@ const QuestionListPage = () => {
                 ))}
             </div>
             <div className="pagination">
-                {Array.from({ length: totalPages }, (_, i) => (
+                {Array.from({ length: 5 }, (_, i) => (
                     <button
                         key={i}
                         className={i + 1 === currentPage ? "active" : ""}
