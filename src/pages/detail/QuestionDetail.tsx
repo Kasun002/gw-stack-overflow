@@ -14,7 +14,7 @@ const QuestionDetailPage = () => {
     const question = contextData.questions.find(q => q.id === questionId);
 
     return (
-        <>
+        <div className='page-wrapper'>
             <div className='header'>
                 <Title title={question?.title} />
                 <QuestionTopMeta></QuestionTopMeta>
@@ -38,7 +38,7 @@ const QuestionDetailPage = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
