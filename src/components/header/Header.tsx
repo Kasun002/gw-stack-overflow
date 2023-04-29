@@ -2,32 +2,22 @@ import React, { useContext, useEffect } from 'react';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
+import Title from '../Title';
 
 const Header = () => {
     const contextData = useContext(AppContext);
 
-    const navigate = useNavigate();
-
-    const askQuestion = () => {
-        navigate('/question');
-    }
-
     useEffect(() => {
-      console.log(contextData.questions)
+        console.log(contextData.questions)
     }, [contextData])
-    
+
 
     return (
         <div className='header'>
-            <div className='header__top'>
-                <h1>All Questions</h1>
-                <button onClick={askQuestion}>
-                    Ask Question
-                </button>
-            </div>
+            <Title title="" />
             <div className='header__bottom'>
                 <div className='text'>
-                {contextData.questions.length}&nbsp;
+                    {contextData.questions.length}&nbsp;
                     questions
                 </div>
                 <div className='filter'>

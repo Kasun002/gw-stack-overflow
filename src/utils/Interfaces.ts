@@ -18,3 +18,7 @@ export interface RandomNameHook {
   lastName: string;
   generateName: () => void;
 }
+
+export interface HeaderTitle {
+  title?: string;
+}

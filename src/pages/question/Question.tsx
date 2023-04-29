@@ -37,11 +37,6 @@ const QuestionPage = () => {
         generateName();
     };
 
-    const selectTag = (event: string) => {
-        //
-    }
-
-
     return (
         <div className='container'>
             <div className='header header__img'>
@@ -75,8 +70,6 @@ const QuestionPage = () => {
                             showSearch
                             allowClear
                             optionLabelProp="children"
-                            onChange={selectTag}
-                            style={{ width: 200 }}
                             placeholder="Select a person"
                         >
                             {TagsOptions.map((option) => {
