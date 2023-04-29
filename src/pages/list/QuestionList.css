@@ -55,3 +55,16 @@
     margin-left: auto;
     color: #999;
   }
+
+  .pagination {
+    gap: 4px;
+  }
+
+  .active {
+    background-color: #f48225;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 3px;
+    font-size: 13px;
+    line-height: calc((13+12)/13);
+  }

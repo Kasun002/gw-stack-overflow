@@ -45,7 +45,7 @@ const QuestionListPage = () => {
                 ))}
             </div>
             <div className="pagination">
-                {Array.from({ length: 5 }, (_, i) => (
+                {Array.from({ length: totalPages }, (_, i) => (
                     <button
                         key={i}
                         className={i + 1 === currentPage ? "active" : ""}
