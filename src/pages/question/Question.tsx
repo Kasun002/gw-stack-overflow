@@ -13,9 +13,9 @@ const QuestionPage = () => {
     const { firstName, lastName, generateName } = useRandomName();
 
     useEffect(() => {
-      generateName();
+        generateName();
     }, [])
-    
+
 
     const layout = {
         labelCol: { span: 8 },
@@ -24,17 +24,29 @@ const QuestionPage = () => {
 
     const validateMessages = {
         required: '${label} is required!',
+        types: {
+            titleLength: 'Title must be at most 255 characters',
+        },
+        string: {
+            max: 'Title must be at most ${max} characters',
+        }
     };
 
     const onFinish = async () => {
-        const fieldValue = questionForm.getFieldsValue().question as Question;
-        fieldValue.id = contextData.questions.length + 1;
-        const now = new Date();
-        fieldValue.timestamp = now.toISOString();
-        fieldValue.author = firstName + ' ' + lastName;
-        contextData.updateData(fieldValue);
-        questionForm.resetFields();
-        generateName();
+        try {
+            await questionForm.validateFields();
+            const fieldValue = questionForm.getFieldsValue().question as Question;
+            fieldValue.id = contextData.questions.length + 1;
+            const now = new Date();
+            fieldValue.timestamp = now.toISOString();
+            fieldValue.author = firstName + ' ' + lastName;
+            contextData.updateData(fieldValue);
+            questionForm.resetFields();
+            generateName();
+        } catch (error) {
+            console.log(error)
+        }
+
     };
 
     return (
@@ -50,16 +62,16 @@ const QuestionPage = () => {
                     {...layout}
                     name="nest-messages"
                     style={{ maxWidth: 'auto' }}
-                    validateMessages={validateMessages}
                 >
                     <label>Title</label>
                     <div>Be specific and imagine you’re asking a question to another person</div>
-                    <Form.Item name={['question', 'title']} rules={[{ required: true }]}>
+                    <Form.Item name={['question', 'title']} rules={[{ required: true, message: validateMessages.required },
+                    { type: 'string', max: 255, message: validateMessages.types.titleLength }]}>
                         <Input style={{ display: 'flex' }} />
                     </Form.Item>
                     <label>Body</label>
                     <div>Include all the information someone would need to answer your question</div>
-                    <Form.Item name={['question', 'body']} rules={[{ required: true }]}>
+                    <Form.Item name={['question', 'body']} rules={[{ required: true, message: validateMessages.required }]}>
                         <Input.TextArea />
                     </Form.Item>
                     <label>Tags</label>
