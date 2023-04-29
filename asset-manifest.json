@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/gw-stack-verflow/static/css/main.def76523.css",
-    "main.js": "/gw-stack-verflow/static/js/main.01c31231.js",
+    "main.css": "/gw-stack-verflow/static/css/main.6e038c98.css",
+    "main.js": "/gw-stack-verflow/static/js/main.f483caf5.js",
     "static/js/787.2416b389.chunk.js": "/gw-stack-verflow/static/js/787.2416b389.chunk.js",
+    "static/media/background.svg": "/gw-stack-verflow/static/media/background.d2f4da52549fd6ca34ce.svg",
     "index.html": "/gw-stack-verflow/index.html",
-    "main.def76523.css.map": "/gw-stack-verflow/static/css/main.def76523.css.map",
-    "main.01c31231.js.map": "/gw-stack-verflow/static/js/main.01c31231.js.map",
+    "main.6e038c98.css.map": "/gw-stack-verflow/static/css/main.6e038c98.css.map",
+    "main.f483caf5.js.map": "/gw-stack-verflow/static/js/main.f483caf5.js.map",
     "787.2416b389.chunk.js.map": "/gw-stack-verflow/static/js/787.2416b389.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.def76523.css",
-    "static/js/main.01c31231.js"
+    "static/css/main.6e038c98.css",
+    "static/js/main.f483caf5.js"
   ]
 }
