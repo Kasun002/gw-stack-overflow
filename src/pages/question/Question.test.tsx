@@ -1,15 +1,15 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import QuestionPage from './Question';
 
 describe('QuestionPage', () => {
-    beforeEach(() => {
-        render(
-            <QuestionPage />
-        );
-    });
-
-    test('renders page title', () => {
-        const titleElement = screen.getByText('Ask a public question');
-        expect(titleElement).toBeInTheDocument();
-    });
+  test('renders the correct title', async () => {
+    const { getByText } = await render(
+      <BrowserRouter>
+        <QuestionPage />
+      </BrowserRouter>
+    );
+    const titleElement = getByText(/Ask a public question/i);
+    expect(titleElement).toBeInTheDocument();
+  });
 });
