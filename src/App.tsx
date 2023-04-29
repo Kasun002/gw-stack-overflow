@@ -1,12 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import RouterPage from './Router';
 import { AppContext } from './context/AppContext';
 import { DummyQuestions } from './utils/DummyQuestion';
+import { Question } from './utils/Interfaces';
 
 const App = () => {
-  const providerData = { questions: DummyQuestions }
+  const [data, setData] = React.useState<Question[]>(DummyQuestions);
+
+  const updateData = (newQuestion: Question) => {
+    const tempData = data;
+    tempData.push(newQuestion)
+    setData(tempData);
+  };
+
+  const providerData = { questions: data, updateData }
+
+
   return (
     <div className="App">
       <AppContext.Provider value={providerData}>

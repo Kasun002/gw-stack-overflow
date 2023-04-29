@@ -1,4 +1,4 @@
-import React , { createContext } from "react";
-import { Question } from "../utils/Interfaces";
+import { createContext } from "react";
+import { ContextData } from "../utils/Interfaces";
 
-export const AppContext = createContext<{questions: Array<Question>}>({questions:[]});
+export const AppContext = createContext<ContextData>({ questions: [], updateData: () => { }});

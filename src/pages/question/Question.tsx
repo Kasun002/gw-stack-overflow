@@ -1,13 +1,12 @@
-import { useState } from 'react';
-import { Question } from '../../utils/Interfaces';
-import './Question.css';
-import { Button, Form, Input, InputNumber, Select } from 'antd';
-import { Option } from 'antd/es/mentions';
+import { Button, Form, Input, Select } from 'antd';
+import { useContext } from 'react';
+import { AppContext } from '../../context/AppContext';
 import { TagsOptions } from '../../utils/Options';
+import './Question.css';
 
 const QuestionPage = () => {
-
-
+    const [questionForm] = Form.useForm();
+    const contextData = useContext(AppContext);
     const layout = {
         labelCol: { span: 8 },
         wrapperCol: { span: 16 },
@@ -17,8 +16,12 @@ const QuestionPage = () => {
         required: '${label} is required!',
     };
 
-    const onFinish = (values: any) => {
-        //
+    const onFinish = () => {
+        const fieldValue = questionForm.getFieldsValue();
+        fieldValue.id = contextData.questions.length + 1;
+        const now = new Date();
+        fieldValue.timestamp = now.toISOString();
+        questionForm.resetFields();
     };
 
     const selectTag = (event: string) => {
@@ -35,6 +38,7 @@ const QuestionPage = () => {
             </div>
             <div className='card'>
                 <Form
+                    form={questionForm}
                     {...layout}
                     name="nest-messages"
                     style={{ maxWidth: 'auto' }}
@@ -43,7 +47,7 @@ const QuestionPage = () => {
                     <label>Title</label>
                     <div>Be specific and imagine you’re asking a question to another person</div>
                     <Form.Item name={['question', 'title']} rules={[{ required: true }]}>
-                        <Input style={{display:'flex' }}/>
+                        <Input style={{ display: 'flex' }} />
                     </Form.Item>
                     <label>Body</label>
                     <div>Include all the information someone would need to answer your question</div>
@@ -63,15 +67,15 @@ const QuestionPage = () => {
                             placeholder="Select a person"
                         >
                             {TagsOptions.map((option) => {
-                                return (<Option key={option} value={option}>
+                                return (<Select.Option key={option} value={option}>
                                     {option}
-                                </Option>)
+                                </Select.Option>)
                             })}
                         </Select>
                     </Form.Item>
                 </Form>
             </div>
-            <div style={{width: "70%", padding:"8px 0px"}}>
+            <div style={{ width: "70%", padding: "8px 0px" }}>
                 <Button className="sof-button" type="primary" htmlType="submit" onClick={onFinish}>
                     Post your question
                 </Button>
