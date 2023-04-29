@@ -38,7 +38,7 @@ const QuestionListPage = () => {
                             <div className="details">
                                 <span className="author">asked by {question.author}</span>
                                 <span className="timestamp">{question.timestamp}</span>
-                                <span className="answer-count">{question.answers.length} answers</span>
+                                <span className="answer-count">5 answers</span>
                             </div>
                         </div>
                     </div>

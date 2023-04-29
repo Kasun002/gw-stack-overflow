@@ -1,20 +1,21 @@
 import { useParams } from 'react-router-dom';
 import './QuestionDetail.css';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { DummyQuestions } from '../../utils/DummyQuestion';
 import Header from '../../components/header/Header';
+import { AppContext } from '../../context/AppContext';
 
 const QuestionDetailPage = () => {
     const { id } = useParams();
+    const contextData = useContext(AppContext);
     const questionId = id ? parseInt(id) : null;
 
-    const question = DummyQuestions.find(q => q.id === questionId);
+    const question = contextData.questions.find(q => q.id === questionId);
 
     return (
         <>
             <div id="content" className="snippet-hidden">
                 <div id="mainbar" role="main" aria-labelledby="h-all-questions">
-                    <Header></Header>
                     <div className='question-wrapper'>
                         <div className="question">
                             <div className="votes">{question?.votes}</div>
