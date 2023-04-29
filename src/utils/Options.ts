@@ -13,4 +13,7 @@ const TagsOptions: Array<string> = [
     'react-router', 'react-redux',
 ];
 
-export {TagsOptions};
+const firstNames: Array<string> = ['John', 'Jane', 'James', 'Jack', 'Jill'];
+const lastNames: Array<string> = ['Doe', 'Smith', 'Johnson', 'Williams', 'Brown'];
+
+export { TagsOptions, firstNames, lastNames };

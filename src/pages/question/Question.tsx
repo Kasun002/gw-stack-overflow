@@ -1,13 +1,22 @@
 import { Button, Form, Input, Select } from 'antd';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AppContext } from '../../context/AppContext';
 import { TagsOptions } from '../../utils/Options';
 import './Question.css';
 import { Question } from '../../utils/Interfaces';
+import useRandomName from '../../hooks/UseRandomName';
 
 const QuestionPage = () => {
     const [questionForm] = Form.useForm();
     const contextData = useContext(AppContext);
+
+    const { firstName, lastName, generateName } = useRandomName();
+
+    useEffect(() => {
+      generateName();
+    }, [])
+    
+
     const layout = {
         labelCol: { span: 8 },
         wrapperCol: { span: 16 },
@@ -17,13 +26,15 @@ const QuestionPage = () => {
         required: '${label} is required!',
     };
 
-    const onFinish = () => {
+    const onFinish = async () => {
         const fieldValue = questionForm.getFieldsValue().question as Question;
         fieldValue.id = contextData.questions.length + 1;
         const now = new Date();
         fieldValue.timestamp = now.toISOString();
+        fieldValue.author = firstName + ' ' + lastName;
         contextData.updateData(fieldValue);
         questionForm.resetFields();
+        generateName();
     };
 
     const selectTag = (event: string) => {

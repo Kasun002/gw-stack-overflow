@@ -12,3 +12,9 @@ export interface ContextData {
   questions: Array<Question>,
   updateData: (value: Question) => void;
 }
+
+export interface RandomNameHook {
+  firstName: string;
+  lastName: string;
+  generateName: () => void;
+}
