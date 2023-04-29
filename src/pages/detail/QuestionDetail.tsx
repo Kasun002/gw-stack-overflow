@@ -46,7 +46,18 @@ const QuestionDetailPage = () => {
                 <div id="mainbar" role="main" aria-labelledby="h-all-questions">
                     <div className='question-wrapper'>
                         <div className="question_info">
-                            <div className="votes">{question?.votes}</div>
+                            <div className="votes">{question?.votes}
+                                <button
+                                    className={''}
+                                   
+                                >
+                                    <span className="vote-count">{question?.votes}</span>
+                                    <i className="s-icon s-icon__arrow-up"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="icon">
+                                        <path d="M12 22l-8-8h5V5h6v9h5l-8 8z" />
+                                    </svg>
+                                </button>
+                            </div>
                             <div className="question-summary">
                                 <div>{question?.body}</div>
                                 <div className="tags">{question?.tags?.map(tag => <div key={tag} className='tag_question'>{tag}</div>)}</div>
