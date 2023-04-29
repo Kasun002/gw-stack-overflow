@@ -21,4 +21,6 @@ export interface RandomNameHook {
 
 export interface HeaderTitle {
   title?: string;
+  urlText?: string;
+  url?: string;
 }

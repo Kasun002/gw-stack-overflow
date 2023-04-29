@@ -5,6 +5,7 @@ import { TagsOptions } from '../../utils/Options';
 import './Question.css';
 import { Question } from '../../utils/Interfaces';
 import useRandomName from '../../hooks/UseRandomName';
+import Title from '../../components/Title';
 
 const QuestionPage = () => {
     const [questionForm] = Form.useForm();
@@ -52,10 +53,8 @@ const QuestionPage = () => {
 
     return (
         <div className='container'>
-            <div className='header header__img'>
-                <div className='header__top'>
-                    <h1>Ask a public question</h1>
-                </div>
+            <div className='header__img'>
+                <Title title='Ask a public question' url='/' urlText='Question List'></Title>
             </div>
             <div className='card'>
                 <Form

@@ -4,6 +4,7 @@ import Header from '../../components/header/Header';
 import { AppContext } from '../../context/AppContext';
 import './QuestionList.css';
 import { PAGE_SIZE } from '../../utils/Constants';
+import QuestionTags from '../../components/Tags';
 
 const QuestionListPage = () => {
     const contextData = useContext(AppContext);
@@ -34,7 +35,7 @@ const QuestionListPage = () => {
                         <div className="question-summary">
                             <Link to={`/question/${question.id}`} className="title">{question.title}</Link>
                             <div>{question.body}</div>
-                            <div className="tags">{question.tags.map((tag: string) => <span key={tag} className='tag_question'>{tag}</span>)}</div>
+                            <QuestionTags tags={question?.tags}></QuestionTags>
                             <div className="details">
                                 <span className="author">asked by {question.author}</span>
                                 <span className="timestamp">{question.timestamp}</span>

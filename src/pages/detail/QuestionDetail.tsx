@@ -4,6 +4,7 @@ import Title from '../../components/Title';
 import { AppContext } from '../../context/AppContext';
 import './QuestionDetail.css';
 import QuestionTopMeta from './QuestionTopMeta';
+import QuestionTags from '../../components/Tags';
 
 const QuestionDetailPage = () => {
     const { id } = useParams();
@@ -26,7 +27,7 @@ const QuestionDetailPage = () => {
                             </div>
                             <div className="question-summary">
                                 <div>{question?.body}</div>
-                                <div className="tags">{question?.tags?.map(tag => <div key={tag} className='tag_question'>{tag}</div>)}</div>
+                                <QuestionTags tags={question?.tags}></QuestionTags>
                                 <div className="details">
                                     <span className="author">asked by {question?.author}</span>
                                     <span className="timestamp">{question?.timestamp}</span>
