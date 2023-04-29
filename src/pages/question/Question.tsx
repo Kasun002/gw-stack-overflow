@@ -21,6 +21,7 @@ const QuestionPage = () => {
         fieldValue.id = contextData.questions.length + 1;
         const now = new Date();
         fieldValue.timestamp = now.toISOString();
+        contextData.updateData(fieldValue);
         questionForm.resetFields();
     };
 
