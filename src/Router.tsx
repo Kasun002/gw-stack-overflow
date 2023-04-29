@@ -14,10 +14,10 @@ const router = createBrowserRouter(
             element: <QuestionPage />
         },
         {
-            path: "question/:id",
+            path: "/question/:id",
             element: <QuestionDetailPage />
         }],
-    { basename: '/' }
+    { basename: '/gw-stack-overflow' }
 );
 
 const RouterPage = () => {
