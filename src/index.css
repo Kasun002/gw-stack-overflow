@@ -49,3 +49,19 @@ code {
   background-color: hsl(209,100%,37.5%);
 }
 
+.sof-button {
+  color: hsl(205,47%,42%);
+  background-color: hsl(205,46%,92%);
+  border: solid 1px hsl(205,41%,63%);
+  border-radius: 2px;
+}
+
+.sof-button:hover {
+  background-color: hsl(205,57%,81%);
+  color: hsl(205,46%,32%);
+}
+.sof-button:active {
+  background-color: hsl(205,57%,81%);
+  color: hsl(205,46%,32%);
+}
+
