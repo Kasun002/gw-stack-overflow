@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Live Demo
 
-Link: [Stack Overflow](https://kasun002.github.io/gw-stack-overflow
+Link: [Stack Overflow](https://kasun002.github.io/gw-stack-overflow)
 
 ## Clone Application
 
