@@ -42,6 +42,7 @@ const QuestionPage = () => {
             const now = new Date();
             fieldValue.timestamp = now.toISOString();
             fieldValue.author = firstName + ' ' + lastName;
+            fieldValue.votes = 0;
             contextData.updateData(fieldValue);
             questionForm.resetFields();
             generateName();
