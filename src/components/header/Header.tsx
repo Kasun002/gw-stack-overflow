@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from 'react';
-import './Header.css';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
 import { AppContext } from '../../context/AppContext';
 import Title from '../Title';
+import './Header.css';
 
 const Header = () => {
     const contextData = useContext(AppContext);

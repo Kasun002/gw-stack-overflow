@@ -15,7 +15,7 @@ const QuestionPage = () => {
 
     useEffect(() => {
         generateName();
-    }, [])
+    }, [generateName])
 
 
     const layout = {
