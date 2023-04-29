@@ -22,7 +22,7 @@ const QuestionListPage = () => {
     );
 
     return (
-        <>
+        <div className='page-wrapper'>
             <div id="content" className="snippet-hidden">
                 <div id="mainbar" role="main" aria-labelledby="h-all-questions">
                     <Header></Header>
@@ -56,7 +56,7 @@ const QuestionListPage = () => {
                     </button>
                 ))}
             </div>
-        </>
+        </div>
 
     );
 }

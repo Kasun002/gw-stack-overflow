@@ -57,16 +57,18 @@
   }
 
   .pagination {
-    gap: 4px;
+    gap: 8px;
+    padding: 16px 0px;
+    display: flex;
   }
 
   .active {
     background-color: #f48225;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding: 8px;
     border-radius: 3px;
     font-size: 13px;
     line-height: calc((13+12)/13);
+    border: none;
   }
 
   .tag_question {
@@ -76,4 +78,8 @@
     background-color: #e1ecf4;
     border:#00000000 ;
     border-radius: 3px;
+  }
+
+  .page-wrapper {
+    padding: 32px;
   }
