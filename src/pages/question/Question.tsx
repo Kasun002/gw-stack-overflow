@@ -1,18 +1,11 @@
 import { useState } from 'react';
 import './Question.css';
 import Header from '../../components/header/Header';
-interface FormData {
-    title: string;
-    body: string;
-    tags: string;
-}
+import { Question } from '../../utils/Interfaces';
 
-const Question = () => {
-    const [formData, setFormData] = useState<FormData>({
-        title: '',
-        body: '',
-        tags: '',
-    });
+
+const QuestionPage = () => {
+    const [formData, setFormData] = useState<Question>({} as Question);
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -53,4 +46,4 @@ const Question = () => {
     );
 }
 
-export default Question;
+export default QuestionPage;

@@ -5,7 +5,7 @@ import { AppContext } from '../../context/AppContext';
 import './QuestionList.css';
 import { PAGE_SIZE } from '../../utils/Constants';
 
-const QuestionList = () => {
+const QuestionListPage = () => {
     const contextData = useContext(AppContext);
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -60,4 +60,4 @@ const QuestionList = () => {
     );
 }
 
-export default QuestionList;
+export default QuestionListPage;

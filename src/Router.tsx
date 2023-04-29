@@ -1,20 +1,20 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import QuestionList from "./pages/list/QuestionList";
-import Question from "./pages/question/Question";
-import QuestionDetail from "./pages/detail/QuestionDetail";
+import QuestionPage from "./pages/question/Question";
+import QuestionListPage from "./pages/list/QuestionList";
+import QuestionDetailPage from "./pages/detail/QuestionDetail";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <QuestionList />
+        element: <QuestionListPage />
     },
     {
         path: "/question",
-        element: <Question/>
+        element: <QuestionPage/>
     },
     {
         path: "question/:id",
-        element: <QuestionDetail/>
+        element: <QuestionDetailPage/>
     },
 ]);
 
