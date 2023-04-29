@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
 import { TagsOptions } from '../../utils/Options';
 import './Question.css';
+import { Question } from '../../utils/Interfaces';
 
 const QuestionPage = () => {
     const [questionForm] = Form.useForm();
@@ -17,7 +18,7 @@ const QuestionPage = () => {
     };
 
     const onFinish = () => {
-        const fieldValue = questionForm.getFieldsValue();
+        const fieldValue = questionForm.getFieldsValue().question as Question;
         fieldValue.id = contextData.questions.length + 1;
         const now = new Date();
         fieldValue.timestamp = now.toISOString();
