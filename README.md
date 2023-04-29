@@ -26,6 +26,7 @@ Use bellow command
 - Custom hooks
 - Typescript
 - React Router dom for routing (v6)
+- [Antd form](https://ant.design/components/form)
 
 ## Available Scripts
 
