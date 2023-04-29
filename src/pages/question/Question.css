@@ -1,6 +1,7 @@
 .container {
   background-color: #f1f2f3;
   padding: 32px;
+  height: 100%;
 }
 
 .header__img {
