@@ -1,0 +1,125 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px;
+    border-bottom: solid 1px hsl(210,8%,90%);
+}
+
+.header__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.header__top > h1{
+    margin: 0;
+    line-height: 0.99;
+    font-weight: 400;
+}
+
+.header__top > button{
+    padding: 8px;
+    background-color: hsl(206,100%,52%);
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+}
+
+.header__top > button:hover {
+    background-color: hsl(209,100%,37.5%);
+}
+
+.header__top > button:active {
+    background-color: hsl(209,100%,37.5%);
+}
+
+
+.header__bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter {
+    display: flex;
+    flex-direction: row;
+    gap: 12px
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+}
+
+.list a {
+    text-decoration: none;
+    padding: 8px;
+    border: solid 1px hsl(210,8%,90%);
+    border-radius: 2px;
+    vertical-align: middle;
+    color: hsl(210,8%,25%);
+    height: fit-content;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.list a:active {
+    background-color: hsl(210,8%,90%);
+}
+
+.list a:hover {
+    background-color: hsl(210,8%,97.5%)
+}
+
+.list a:active {
+    background-color: hsl(210,8%,97.5%)
+}
+
+.tag-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+}
+
+.tag-wrapper .tag{
+    background-color: hsl(206,100%,40%);
+    color: #fff;
+    border-radius: 2px;
+    font-size: 0.7rem;
+    height: fit-content;
+    background-color: #fff;
+}
+
+.list > button {
+    background-color: #fff;
+    border: solid 1px hsl(210,8%,90%);
+    border-radius: 2px;
+}
+
+.list > button:hover {
+    background-color: hsl(210,8%,97.5%)
+}
+
+.list > button:active {
+    background-color: hsl(210,8%,97.5%)
+}
+
+.filter > button {
+    color: hsl(205,47%,42%);
+    background-color: hsl(205,46%,92%);
+    border: solid 1px hsl(205,41%,63%);
+    border-radius: 2px;
+}
+
+.filter > button:hover {
+    background-color: hsl(205,57%,81%);
+    color: hsl(205,46%,32%);
+}
+.filter > button:active {
+    background-color: hsl(205,57%,81%);
+    color: hsl(205,46%,32%);
+}
