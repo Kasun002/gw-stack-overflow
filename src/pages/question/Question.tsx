@@ -26,6 +26,7 @@ const QuestionPage = () => {
         required: '${label} is required!',
         types: {
             titleLength: 'Title must be at most 255 characters',
+            maxTags: 'You can select up to 5 tags'
         },
         string: {
             max: 'Title must be at most ${max} characters',
@@ -76,7 +77,12 @@ const QuestionPage = () => {
                     </Form.Item>
                     <label>Tags</label>
                     <div>Add up to 5 tags to describe what your question is about</div>
-                    <Form.Item name={['question', 'tags']}>
+                    <Form.Item name={['question', 'tags']} rules={[{
+                        validator: (_, value) =>
+                            value && value.length <= 5
+                                ? Promise.resolve()
+                                : Promise.reject(new Error(validateMessages.types.maxTags)),
+                    }]}>
                         <Select
                             mode="tags"
                             showSearch
@@ -93,7 +99,7 @@ const QuestionPage = () => {
                     </Form.Item>
                 </Form>
             </div>
-            <div style={{ width: "70%", padding: "8px 0px" }}>
+            <div className='submit__wrapper'>
                 <Button className="sof-button" type="primary" htmlType="submit" onClick={onFinish}>
                     Post your question
                 </Button>
