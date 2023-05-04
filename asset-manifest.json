@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/gw-stack-overflow/static/css/main.9a1e8402.css",
-    "main.js": "/gw-stack-overflow/static/js/main.f000c1aa.js",
+    "main.css": "/gw-stack-overflow/static/css/main.99373bab.css",
+    "main.js": "/gw-stack-overflow/static/js/main.e9b31861.js",
     "static/js/787.2e023018.chunk.js": "/gw-stack-overflow/static/js/787.2e023018.chunk.js",
     "static/media/background.svg": "/gw-stack-overflow/static/media/background.d2f4da52549fd6ca34ce.svg",
     "index.html": "/gw-stack-overflow/index.html",
-    "main.9a1e8402.css.map": "/gw-stack-overflow/static/css/main.9a1e8402.css.map",
-    "main.f000c1aa.js.map": "/gw-stack-overflow/static/js/main.f000c1aa.js.map",
+    "main.99373bab.css.map": "/gw-stack-overflow/static/css/main.99373bab.css.map",
+    "main.e9b31861.js.map": "/gw-stack-overflow/static/js/main.e9b31861.js.map",
     "787.2e023018.chunk.js.map": "/gw-stack-overflow/static/js/787.2e023018.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9a1e8402.css",
-    "static/js/main.f000c1aa.js"
+    "static/css/main.99373bab.css",
+    "static/js/main.e9b31861.js"
   ]
 }
