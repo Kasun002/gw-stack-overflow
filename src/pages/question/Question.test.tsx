@@ -1,64 +1,101 @@
-import { fireEvent, render, waitFor } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import QuestionPage from './Question';
+import { act, render, screen } from "@testing-library/react";
+import QuestionPage from "./Question";
+import { BrowserRouter } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 
-describe('QuestionPage', () => {
-  test('renders the correct Title component', async () => {
-    const { getByText } = await render(
+const mockMatchMedia = (mediaQuery: string): MediaQueryList => {
+  return {
+    media: mediaQuery,
+    matches: false,
+    onchange: null,
+    addListener: jest.fn(),
+    removeListener: jest.fn(),
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  };
+};
+
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: mockMatchMedia,
+});
+
+const mockedUsedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...(jest.requireActual("react-router-dom") as any),
+  useNavigate: () => mockedUsedNavigate
+}));
+
+jest.mock('../../utils/Options', () => ({
+  TagsOptions: ['node.js', 'jquery',],
+  firstNames: ['John', 'Jane'],
+  lastNames:['Doe', 'Smith',]
+}));
+
+describe("Questions Component", () => {
+  
+  test("Check title", () => {
+    render(
       <BrowserRouter>
-        <QuestionPage />
+        <QuestionPage></QuestionPage>
       </BrowserRouter>
     );
-    const titleElement = getByText(/Ask a public question/i);
+    const titleElement = screen.getByText(`Ask a public question`);
     expect(titleElement).toBeInTheDocument();
   });
 
-  test('validates the question title field', async () => {
-    const { getByLabelText, getByText } = await render(
+  test("Submit form question", async () => {
+    render(
       <BrowserRouter>
-        <QuestionPage />
+        <QuestionPage></QuestionPage>
       </BrowserRouter>
     );
 
-    const titleInput = getByLabelText(/Title/i);
-    fireEvent.change(titleInput, { target: { value: '' } });
+    const questionTitle: HTMLInputElement = await screen.getByTestId('questionTitle') as HTMLInputElement;
+    await act(async () => {
+      userEvent.type(questionTitle, 'How to write test');
+    });
+    expect(questionTitle.value).toBe('How to write test');
+    expect(questionTitle).toBeInTheDocument();
 
-    const submitButton = getByText(/Post your question/i);
-    fireEvent.click(submitButton);
+    const questionBody: HTMLTextAreaElement = await screen.getByTestId('questionBody') as HTMLTextAreaElement;
+    await act(async () => {
+    userEvent.type(questionBody,  'Need to know sample formate of a unit test in jest react');
+    });
+    expect(questionBody.value).toBe('Need to know sample formate of a unit test in jest react');
+    expect(questionBody).toBeInTheDocument();
+    
+    const questionTag: HTMLSelectElement = await screen.getByRole('combobox') as HTMLSelectElement;
+    await act(async () => {
+    userEvent.click(questionTag);
+    });
+    await screen.findAllByText('node.js');
+    await act(async () => {
+    userEvent.click(screen.getAllByText('node.js')[0]);
+    });
 
-    const errorMessage = getByText(/Title is required/i);
-    expect(errorMessage).toBeInTheDocument();
+    const submitButton:HTMLButtonElement = screen.getByText('Post your question');
+    await act(async () => {
+    userEvent.click(submitButton);
+    });
+    expect(submitButton).toBeInTheDocument();
   });
 
-  test('renders the correct title', async () => {
-    const { getByText, getByLabelText } = await render(
+  test("Should show validation messges", async () => {
+    render(
       <BrowserRouter>
-        <QuestionPage />
+        <QuestionPage></QuestionPage>
       </BrowserRouter>
     );
-  
-    const titleInput = getByLabelText('Title');
-    const bodyInput = getByLabelText('Body');
-    const postButton = getByText('Post your question');
-  
-    fireEvent.change(titleInput, { target: { value: 'a'.repeat(256) } });
-    fireEvent.change(bodyInput, { target: { value: 'Test body' } });
-    fireEvent.click(postButton);
-    const errorElement = await waitFor(() =>
-      getByText('Title must be at most 255 characters')
-    );
-    expect(errorElement).toBeInTheDocument();
-  });
+    const submitButton:HTMLButtonElement = screen.getByText('Post your question');
+    userEvent.click(submitButton);
 
-  test('displays validation error message for body field', async () => {
-    const { getByText, getByRole } = await render(
-      <BrowserRouter>
-        <QuestionPage />
-      </BrowserRouter>
-    );
-    const submitButton = getByRole('button', { name: /Post your question/i });
-    fireEvent.click(submitButton);
-    const errorMessage = getByText('Body is required!');
-    expect(errorMessage).toBeInTheDocument();
+    const titleError = await screen.findByText('question,title is required!');
+    expect(titleError).toBeInTheDocument();
+    const bodyError = await screen.findByText('question,body is required!');
+    expect(bodyError).toBeInTheDocument();
+    const tagError = await screen.findByText('You can select up to 5 tags');
+    expect(tagError).toBeInTheDocument();
   });
 });

@@ -70,12 +70,12 @@ const QuestionPage = () => {
                     <div>Be specific and imagine you’re asking a question to another person</div>
                     <Form.Item name={['question', 'title']} rules={[{ required: true, message: validateMessages.required },
                     { type: 'string', max: 255, message: validateMessages.types.titleLength }]}>
-                        <Input style={{ display: 'flex' }} />
+                        <Input style={{ display: 'flex' }} data-testid="questionTitle" />
                     </Form.Item>
                     <label>Body</label>
                     <div>Include all the information someone would need to answer your question</div>
                     <Form.Item name={['question', 'body']} rules={[{ required: true, message: validateMessages.required }]}>
-                        <Input.TextArea />
+                        <Input.TextArea data-testid="questionBody"/>
                     </Form.Item>
                     <label>Tags</label>
                     <div>Add up to 5 tags to describe what your question is about</div>
@@ -91,6 +91,7 @@ const QuestionPage = () => {
                             allowClear
                             optionLabelProp="children"
                             placeholder="Select a person"
+                            data-testid="questionTag"
                         >
                             {TagsOptions.map((option) => {
                                 return (<Select.Option key={option} value={option}>
