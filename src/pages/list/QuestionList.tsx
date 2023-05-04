@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/header/Header';
 import { AppContext } from '../../context/AppContext';
@@ -16,10 +16,13 @@ const QuestionListPage = () => {
 
     const totalPages = Math.ceil(contextData.questions.length / PAGE_SIZE);
 
-    const visibleQuestions = contextData.questions.slice(
-        (currentPage - 1) * PAGE_SIZE,
-        currentPage * PAGE_SIZE
-    );
+    // Re render if questions array changes or currentPage value changes
+    const visibleQuestions = useMemo(() => {
+        return contextData.questions.slice(
+            (currentPage - 1) * PAGE_SIZE,
+            currentPage * PAGE_SIZE
+        );
+    }, [contextData.questions, currentPage]);
 
     return (
         <div className='page-wrapper'>
@@ -30,7 +33,7 @@ const QuestionListPage = () => {
             </div>
             <div className="question-list">
                 {visibleQuestions.map((question: any) => (
-                    <div key={question.id} className="question">
+                    <div key={`question-`+question.id} className="question">
                         <div className="votes">{question.votes}</div>
                         <div className="question-summary">
                             <Link to={`/question/${question.id}`} className="title">{question.title}</Link>
@@ -48,7 +51,7 @@ const QuestionListPage = () => {
             <div className="pagination">
                 {Array.from({ length: totalPages }, (_, i) => (
                     <button
-                        key={i}
+                        key={`page-`+i}
                         className={i + 1 === currentPage ? "active" : ""}
                         onClick={() => handleClick(i + 1)}
                     >

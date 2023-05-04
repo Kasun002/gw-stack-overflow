@@ -21,10 +21,10 @@ const Header = () => {
                 </div>
                 <div className='filter'>
                     <div className='list'>
-                        <a href="">Newest</a>
-                        <a href="">Active</a>
-                        <a href=""><div className='tag-wrapper'>Bountied <div className='tag'>245</div></div></a>
-                        <a href="">Unanswered</a>
+                        <a href="/">Newest</a>
+                        <a href="/">Active</a>
+                        <a href="/"><div className='tag-wrapper'>Bountied <div className='tag'>245</div></div></a>
+                        <a href="/">Unanswered</a>
                         <button>More</button>
                     </div>
                     <button>Filter</button>

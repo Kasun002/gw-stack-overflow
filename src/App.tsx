@@ -9,9 +9,14 @@ const App = () => {
   const [data, setData] = React.useState<Question[]>(DummyQuestions);
 
   const updateData = (newQuestion: Question) => {
-    const tempData = data;
-    tempData.push(newQuestion)
-    setData(tempData);
+    const existingQuestionList = data;
+    if (newQuestion.isUpdated) {
+      const existingIndex = existingQuestionList.findIndex(question => question.id === newQuestion.id);
+      existingQuestionList[existingIndex] = newQuestion;
+      setData(existingQuestionList);
+    } else {
+      setData([...data, newQuestion]);
+    }
   };
 
   const providerData = { questions: data, updateData }

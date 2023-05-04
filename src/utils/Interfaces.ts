@@ -6,6 +6,7 @@ export interface Question {
   timestamp?: string;
   tags?: string[];
   votes?: number;
+  isUpdated?: boolean;
 }
 
 export interface ContextData {

@@ -1,17 +1,38 @@
-import { useContext } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Title from '../../components/Title';
 import { AppContext } from '../../context/AppContext';
 import './QuestionDetail.css';
 import QuestionTopMeta from './QuestionTopMeta';
 import QuestionTags from '../../components/Tags';
+import { Question } from '../../utils/Interfaces';
 
 const QuestionDetailPage = () => {
     const { id } = useParams();
     const contextData = useContext(AppContext);
     const questionId = id ? parseInt(id) : null;
+    const [votes, setVote] = useState(0);
 
-    const question = contextData.questions.find(q => q.id === questionId);
+    const question = useMemo(() => {
+        const selectedQuestion = contextData.questions.find(q => q.id === questionId);
+        setVote(selectedQuestion?.votes ?? 0)
+        return selectedQuestion;
+    }, [contextData.questions, questionId])
+
+
+    const cumulateVote = (up?: boolean) => {
+        let cumulativeVote = votes;
+        cumulativeVote = up ? cumulativeVote + 1 : cumulativeVote - 1;
+        setVote(cumulativeVote);
+        updateQuestionList(cumulativeVote)
+    }
+
+    const updateQuestionList = (cumulativeVote: number) =>{
+        let updatedQuestion = question as Question;
+        updatedQuestion.votes = cumulativeVote;
+        updatedQuestion.isUpdated = true;
+        contextData.updateData(updatedQuestion);
+    }
 
     return (
         <div className='page-wrapper'>
@@ -23,7 +44,10 @@ const QuestionDetailPage = () => {
                 <div id="mainbar" role="main" aria-labelledby="h-all-questions">
                     <div className='question-wrapper'>
                         <div className="question_info">
-                            <div className="votes">{question?.votes}
+                            <div className="votes">
+                                <button onClick={() => cumulateVote(true)}>^</button>
+                                <div >{votes}</div>
+                                <button className='down-arrow' onClick={() => cumulateVote()}>^</button>
                             </div>
                             <div className="question-summary">
                                 <div>{question?.body}</div>

@@ -24,12 +24,14 @@ const QuestionPage = () => {
     };
 
     const validateMessages = {
+        // eslint-disable-next-line
         required: '${label} is required!',
         types: {
             titleLength: 'Title must be at most 255 characters',
             maxTags: 'You can select up to 5 tags'
         },
         string: {
+            // eslint-disable-next-line
             max: 'Title must be at most ${max} characters',
         }
     };

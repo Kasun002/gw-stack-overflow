@@ -22,3 +22,8 @@
   .page-wrapper {
     padding: 32px;
   }
+
+  .down-arrow {
+    display: inline-block;
+    transform: rotate(180deg);
+  }
